@@ -31,8 +31,9 @@ jobs:
         - export GO111MODULE=auto
       script: 
         - golint --set_exit_status ./...
-        - if [[ $(gofmt -s -l .) ]]; then gofmt -s -l .; exit 1; else exit 0; fi 
-        - if [[ $(goimports -l .) ]]; then goimports -l .; exit 1; else exit 0; fi 
+        - if [[ $(gofmt -s -l .) ]]; then gofmt -s -l .; exit 1; fi 
+        - if [[ $(goimports -l .) ]]; then goimports -l .; exit 1; fi
+        - exit 0 
     - name: server test
       stage: test
       language: go
