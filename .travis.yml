@@ -27,6 +27,8 @@ jobs:
       go: 1.12.x
       before_script:
         - export GO111MODULE=off
+        - go get golang.org/x/lint/golint
+        - export GO111MODULE=auto
       script: 
         - golint --set_exit_status ./...
         - if [[ $(gofmt -s -l .) ]]; then gofmt -s -l .; exit 1; else exit 0; fi 
