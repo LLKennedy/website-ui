@@ -10,11 +10,16 @@ jobs:
       stage: compile
       language: go
       go: 1.12.x
-      script: go build ./server -o server.o
+      script: go build -o server.o ./server 
     - name: ui
       stage: compile
       language: node_js
       node_js: 10
+      cache:
+        directories:
+          - node_modules
+      install:
+        - npm install
       script: npm run build
     - name: server
       stage: test
