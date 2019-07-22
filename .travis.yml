@@ -10,7 +10,7 @@ jobs:
       stage: compile
       language: go
       go: 1.12.x
-      script: go build ./server
+      script: go build ./server -o server.o
     - name: ui
       stage: compile
       language: node_js
