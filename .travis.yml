@@ -21,11 +21,29 @@ jobs:
       install:
         - cd ui; npm install
       script: npm run build
-    - name: server
+    - name: server lint
       stage: test
       language: go
       go: 1.12.x
-      script: go test ./server/internal/...
+      before_script:
+        - export GO111MODULE=off
+      script: 
+        - golint --set_exit_status ./...
+        - if [[ $(gofmt -s -l .) ]]; then gofmt -s -l .; exit 1; else exit 0; fi 
+        - if [[ $(goimports -l .) ]]; then goimports -l .; exit 1; else exit 0; fi 
+    - name: server test
+      stage: test
+      language: go
+      go: 1.12.x
+      script: 
+        - go test ./server/internal/... -race
+    - name: server coverage
+      stage: test
+      language: go
+      go: 1.12.x
+      script: 
+        - go test ./server/internal/... -coverprofile=c.out
+        - go tool cover -func=c.out
     - name: ui
       stage: test
       language: node_js
