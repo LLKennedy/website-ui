@@ -1,0 +1,43 @@
+os:
+  - linux
+  - osx
+
+stages:
+  - compile
+  - test
+  - name: deploy
+    if: branch = master
+
+jobs:
+  include:
+    - name: server
+      stage: compile
+      language: go
+      go: 1.12.x
+      script: go build ./server
+    - name: ui
+      stage: compile
+      language: node_js
+      node_js: 10
+      script: npm run build
+    - name: server
+      stage: test
+      language: go
+      go: 1.12.x
+      script: go test ./server/internal/...
+    - name: ui
+      stage: test
+      language: node_js
+      node_js: 10
+      script: npm run test
+    - name: server
+      stage: deploy
+      language: go
+      go: 1.12.x
+      script: exit 0 # write deployment code
+    - name: ui
+      stage: deploy
+      language: node_js
+      node_js: 10
+      script: exit 0 # write deployment code
+
