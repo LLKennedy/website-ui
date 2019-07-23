@@ -44,37 +44,39 @@ jobs:
       stage: test
       language: go
       go: 1.12.x
-      provider: s3
-      access_key_id: $S3_ACCESS_KEY_ID
-      secret_access_key: $S3_SECRET_ACCESS_KEY
-      bucket: "lukekennedy-net-travis"
-      skip_cleanup: true
-      local_dir: coverage
-      upload_dir: $TRAVIS_BUILD_NUMBER/server
       script: 
         - mandatory_coverage="90"
         - mkdir coverage
         - go test ./server/internal/... -coverprofile=c.out
         - go tool cover -func=c.out > coverage/coverage.txt
         - coverage_percent=$(grep -Eo "total:.*\(statements\).*[0-9.]+" coverage/coverage.txt | grep -Eo "[0-9]+\.[0-9]+" | bc) # I am not good at bash
-        - if [ $(bc -l <<< "$coverage_percent < $mandatory_coverage") -eq 1 ]; then echo "Coverage percentage was ${coverage_percent}, must be at least ${mandatory_coverage}!; exit 1; fi
+        - if [ $(bc -l <<< "$coverage_percent < $mandatory_coverage") -eq 1 ]; then echo "Coverage percentage was ${coverage_percent}, must be at least ${mandatory_coverage}!"; exit 1; fi
+      deploy:
+        provider: s3
+        access_key_id: $S3_ACCESS_KEY_ID
+        secret_access_key: $S3_SECRET_ACCESS_KEY
+        bucket: "lukekennedy-net-travis"
+        skip_cleanup: true
+        local_dir: coverage
+        upload_dir: $TRAVIS_BUILD_NUMBER/server
     - name: ui
       stage: test
       language: node_js
       node_js: 10
-      provider: s3
-      access_key_id: $S3_ACCESS_KEY_ID
-      secret_access_key: $S3_SECRET_ACCESS_KEY
-      bucket: "lukekennedy-net-travis"
-      skip_cleanup: true
-      local_dir: coverage
-      upload_dir: $TRAVIS_BUILD_NUMBER/ui
       cache:
         directories:
           - node_modules
       install:
         - cd ui; npm install
       script: npm run test
+      deploy:
+        provider: s3
+        access_key_id: $S3_ACCESS_KEY_ID
+        secret_access_key: $S3_SECRET_ACCESS_KEY
+        bucket: "lukekennedy-net-travis"
+        skip_cleanup: true
+        local_dir: coverage
+        upload_dir: $TRAVIS_BUILD_NUMBER/ui
     - name: server
       stage: deploy
       language: go
