@@ -1,6 +1,7 @@
 stages:
   - compile
   - test
+  - aggregate
   - report
   - name: deploy
     if: branch = master
@@ -88,8 +89,8 @@ jobs:
         upload_dir: $TRAVIS_BUILD_NUMBER/ui
         on:
           all_branches: true
-    - name: coveralls
-      stage: report
+    - merge_coverage: coveralls
+      stage: aggregate
       language: node_js
       node_js: 10
       cache:
@@ -106,6 +107,8 @@ jobs:
         # pull individually built coverage reports into local storage
         - mkdir build_cov
         - s3-cli sync --region=ap-southeast-2 --config "./.s3cfg" s3://lukekennedy-net-travis/$TRAVIS_BUILD_NUMBER/ ./build_cov/
+        - junit-merge -o combined.xml ./build_cov/server/report.xml ./build_cov/ui/junit.xml
+        - cat combined.xml
     - name: server
       stage: deploy
       language: go
