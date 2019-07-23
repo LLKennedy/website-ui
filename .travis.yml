@@ -53,8 +53,6 @@ jobs:
         - if [ $(bc -l <<< "$coverage_percent < $mandatory_coverage") -eq 1 ]; then echo "Coverage percentage was ${coverage_percent}, must be at least ${mandatory_coverage}!"; exit 1; fi
       deploy:
         provider: s3
-        # access_key_id: $S3_ACCESS_KEY_ID
-        # secret_access_key: $S3_SECRET_ACCESS_KEY
         bucket: "lukekennedy-net-travis"
         region: ap-southeast-2
         skip_cleanup: true
@@ -74,8 +72,6 @@ jobs:
       script: npm run test
       deploy:
         provider: s3
-        # access_key_id: $S3_ACCESS_KEY_ID
-        # secret_access_key: $S3_SECRET_ACCESS_KEY
         bucket: "lukekennedy-net-travis"
         region: ap-southeast-2
         skip_cleanup: true
@@ -96,8 +92,19 @@ jobs:
         directories:
           - node_modules
       install:
-        - cd ui; npm install
+        - cd ui
+        - npm install
       script: exit 0 # write deployment code
     - name: coveralls
       stage: report
-      script: exit 0; # do nothing for now
+      language: node_js
+      node_js: 10
+      cache:
+        directories:
+          - node_modules
+      install:
+        - npm install junit-merge
+        - npm install s3-cli
+      script: 
+        - echo "[default]\naccess_key = ${AWS_ACCESS_KEY_ID}\nsecret_key=${AWS_SECRET_ACCESS_KEY}" > ./.s3cfg
+        - cat ./.s3cfg
