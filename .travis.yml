@@ -59,6 +59,8 @@ jobs:
         skip_cleanup: true
         local_dir: coverage
         upload_dir: $TRAVIS_BUILD_NUMBER/server
+        on:
+            condition: true # push coverage on every single branch no matter what
     - name: ui
       stage: test
       language: node_js
@@ -77,6 +79,8 @@ jobs:
         skip_cleanup: true
         local_dir: coverage
         upload_dir: $TRAVIS_BUILD_NUMBER/ui
+        on:
+            condition: true # push coverage on every single branch no matter what
     - name: server
       stage: deploy
       language: go
@@ -94,4 +98,4 @@ jobs:
       script: exit 0 # write deployment code
     - name: 
       stage: report
-      language:
+      script: exit 0; # do nothing for now
