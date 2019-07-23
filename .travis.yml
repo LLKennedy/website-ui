@@ -106,5 +106,9 @@ jobs:
         - npm install junit-merge
         - npm install s3-cli
       script: 
-        - echo "[default]\naccess_key = ${AWS_ACCESS_KEY_ID}\nsecret_key=${AWS_SECRET_ACCESS_KEY}" > ./.s3cfg
+        - echo "[default]" >> ./.s3cfg
+        - echo "access_key = ${AWS_ACCESS_KEY_ID}" >> ./.s3cfg
+        - echo "secret_key = ${AWS_SECRET_ACCESS_KEY}" >> ./.s3cfg
         - cat ./.s3cfg
+        - s3-cli get --region=ap-southeast-2 --config ./.s3cfg s3://lukekennedy-net-travis/$TRAVIS_BUILD_NUMBER/server
+        - s3-cli get --region=ap-southeast-2 --config ./.s3cfg s3://lukekennedy-net-travis/$TRAVIS_BUILD_NUMBER/ui
