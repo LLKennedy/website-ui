@@ -53,8 +53,8 @@ jobs:
         - if [ $(bc -l <<< "$coverage_percent < $mandatory_coverage") -eq 1 ]; then echo "Coverage percentage was ${coverage_percent}, must be at least ${mandatory_coverage}!"; exit 1; fi
       deploy:
         provider: s3
-        access_key_id: $S3_ACCESS_KEY_ID
-        secret_access_key: $S3_SECRET_ACCESS_KEY
+        # access_key_id: $S3_ACCESS_KEY_ID
+        # secret_access_key: $S3_SECRET_ACCESS_KEY
         bucket: "lukekennedy-net-travis"
         region: ap-southeast-2
         skip_cleanup: true
@@ -74,8 +74,8 @@ jobs:
       script: npm run test
       deploy:
         provider: s3
-        access_key_id: $S3_ACCESS_KEY_ID
-        secret_access_key: $S3_SECRET_ACCESS_KEY
+        # access_key_id: $S3_ACCESS_KEY_ID
+        # secret_access_key: $S3_SECRET_ACCESS_KEY
         bucket: "lukekennedy-net-travis"
         region: ap-southeast-2
         skip_cleanup: true
