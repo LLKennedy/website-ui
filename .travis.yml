@@ -11,6 +11,8 @@ jobs:
       stage: compile
       language: go
       go: 1.12.x
+      before_script:
+        - export GO111MODULE=auto
       script: go build -o server.o ./server 
     - name: ui
       stage: compile
@@ -38,12 +40,18 @@ jobs:
       stage: test
       language: go
       go: 1.12.x
+      before_script:
+        - export GO111MODULE=auto
       script: 
         - go test ./server/internal/... -race
     - name: server coverage
       stage: test
       language: go
       go: 1.12.x
+      before_script:
+        - export GO111MODULE=off
+        - go get github.com/jstemmer/go-junit-report
+        - export GO111MODULE=auto
       script: 
         - mandatory_coverage="90"
         - mkdir coverage
@@ -51,6 +59,7 @@ jobs:
         - go tool cover -func=c.out > coverage/coverage.txt
         - coverage_percent=$(grep -Eo "total:.*\(statements\).*[0-9.]+" coverage/coverage.txt | grep -Eo "[0-9]+\.[0-9]+" | bc) # I am not good at bash
         - if [ $(bc -l <<< "$coverage_percent < $mandatory_coverage") -eq 1 ]; then echo "Coverage percentage was ${coverage_percent}, must be at least ${mandatory_coverage}!"; exit 1; fi
+        - go test ./server/internal/... -v 2>&1 | go-junit-report > coverage/report.xml
       deploy:
         provider: s3
         bucket: "lukekennedy-net-travis"
@@ -101,6 +110,8 @@ jobs:
       stage: deploy
       language: go
       go: 1.12.x
+      before_script:
+        - export GO111MODULE=auto
       script: exit 0 # write deployment code
     - name: ui
       stage: deploy
