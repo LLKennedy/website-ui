@@ -69,7 +69,7 @@ jobs:
           - node_modules
       install:
         - cd ui; npm install
-      script: npm run test
+      script: npm run test:ci
       deploy:
         provider: s3
         bucket: "lukekennedy-net-travis"

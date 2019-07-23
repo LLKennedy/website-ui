@@ -10,8 +10,32 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test --coverage --no-watch",
-    "coveralls": "react-scripts test --coverage && cat ./coverage/lcov.info | coveralls"
+    "test": "react-scripts test --env=jsdom",
+    "test:ci": "react-scripts test --env=jsdom --reporters ./node_modules/jest-junit --coverage --coverageDirectory=coverage",
+    "coverage": "react-scripts test --env=jsdom --coverage"
+  },
+  "jest": {
+    "collectCoverageFrom": [
+      "**/*.{ts,tsx}",
+      "!**/node_modules/**",
+      "!**/build/**",
+      "!**/definitionfiles/**",
+      "!**/WebWorkers/**",
+      "!**/*.mock.ts",
+      "!src/serviceWorker.js"
+    ],
+    "coverageReporters": [
+      "lcov",
+      "text"
+    ]
+  },
+  "jest-junit": {
+    "suiteName": "jest tests",
+    "output": "coverage/junit.xml",
+    "classNameTemplate": "{classname} - {title}",
+    "titleTemplate": "{classname} - {title}",
+    "ancestorSeparator": " > ",
+    "usePathForSuiteName": "true"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -29,6 +53,7 @@
     ]
   },
   "devDependencies": {
-    "coveralls": "^3.0.5"
+    "coveralls": "^3.0.5",
+    "jest-junit": "^6.4.0"
   }
 }

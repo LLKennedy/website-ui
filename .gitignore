@@ -62,3 +62,4 @@ typings/
 *.exe
 *.out
 *.s3cfg
+ui/junit.xml
