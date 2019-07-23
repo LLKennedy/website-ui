@@ -33,7 +33,6 @@ jobs:
         - golint --set_exit_status ./...
         - if [[ $(gofmt -s -l .) ]]; then gofmt -s -l .; exit 1; fi 
         - if [[ $(goimports -l .) ]]; then goimports -l .; exit 1; fi
-        - exit 0 
     - name: server test
       stage: test
       language: go
@@ -46,7 +45,9 @@ jobs:
       go: 1.12.x
       script: 
         - go test ./server/internal/... -coverprofile=c.out
-        - go tool cover -func=c.out
+        - go tool cover -func=c.out | coverage.txt
+        - coverage_percent=$(grep -Eo "total:.*\(statements\).*[0-9.]+" coverage.txt | grep -Eo "[0-9]+\.[0-9]+" | bc) # I am not good at bash
+        - if [ $(bc -l <<< "$coverage_percent < 90") -eq 1 ]; then exit 1; fi
     - name: ui
       stage: test
       language: node_js
