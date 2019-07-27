@@ -23,6 +23,7 @@
       "!**/WebWorkers/**",
       "!**/*.mock.ts",
       "!coverage/**",
+      "!src/index.js",
       "!src/serviceWorker.js"
     ],
     "coverageReporters": [
@@ -46,7 +47,6 @@
     ]
   },
   "devDependencies": {
-    "coveralls": "^3.0.5",
-    "nyc": "^14.1.1"
+    "coveralls": "^3.0.5"
   }
 }
