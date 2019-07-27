@@ -38,7 +38,10 @@ jobs:
         - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
         - chmod +x ./cc-test-reporter
         - ./cc-test-reporter before-build
-      script: npm run coveralls
+      script: 
+        - CI=true 
+        - npm run coverage
+        - npm run coveralls
       after_script:
         # - codeclimate < coverage/**/lcov.info
         - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT

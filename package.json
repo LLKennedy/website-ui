@@ -11,8 +11,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
-    "coveralls": "react-scripts test --env=jsdom --coverage && cat ./coverage/lconv.info | coveralls",
-    "coverage": "react-scripts test --env=jsdom --coverage"
+    "coverage": "react-scripts test --env=jsdom --coverage",
+    "coveralls": "cat ./coverage/lconv.info | node node_modules/.bin/coveralls"
   },
   "jest": {
     "collectCoverageFrom": [
