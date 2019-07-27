@@ -1,6 +1,6 @@
 stages:
-  - compile
   - test
+  - compile
   - name: deploy
     if: branch = master
 
@@ -41,6 +41,7 @@ jobs:
       script: 
         - CI=true 
         - npm run coverage
+        - cat ./coverage/lcov.info
         - npm run coveralls
       after_script:
         # - codeclimate < coverage/**/lcov.info
