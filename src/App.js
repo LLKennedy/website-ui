@@ -3,7 +3,7 @@ import logo from './logo.svg';
 import './App.css';
 
 function App() {
-  return (
+  const retVal = (
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
@@ -21,6 +21,7 @@ function App() {
       </header>
     </div>
   );
+  return retVal;
 }
 
 export default App;
