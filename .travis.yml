@@ -39,12 +39,8 @@ jobs:
         - chmod +x ./cc-test-reporter
         - ./cc-test-reporter before-build
       script: 
-        - CI=true 
-        - npm run coverage
-        - cat ./coverage/lcov.info
         - npm run coveralls
       after_script:
-        # - codeclimate < coverage/**/lcov.info
         - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
     - name: deploy
       stage: deploy
