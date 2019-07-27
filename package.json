@@ -11,7 +11,7 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
-    "test:ci": "react-scripts test --env=jsdom --reporters ./node_modules/jest-junit --coverage --coverageDirectory=coverage",
+    "coveralls": "react-scripts test --env=jsdom --coverage && cat ./coverage/lconv.info | coveralls",
     "coverage": "react-scripts test --env=jsdom --coverage"
   },
   "jest": {
@@ -29,14 +29,6 @@
       "text"
     ]
   },
-  "jest-junit": {
-    "suiteName": "jest tests",
-    "output": "coverage/junit.xml",
-    "classNameTemplate": "{classname} - {title}",
-    "titleTemplate": "{classname} - {title}",
-    "ancestorSeparator": " > ",
-    "usePathForSuiteName": "true"
-  },
   "eslintConfig": {
     "extends": "react-app"
   },
@@ -53,7 +45,6 @@
     ]
   },
   "devDependencies": {
-    "coveralls": "^3.0.5",
-    "jest-junit": "^6.4.0"
+    "coveralls": "^3.0.5"
   }
 }
