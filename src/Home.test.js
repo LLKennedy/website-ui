@@ -1,9 +1,8 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import Home from './Home';
+import renderer from 'react-test-renderer';
 
-it('renders without crashing', async () => {
-    const div = document.createElement('div');
-    await ReactDOM.render(<Home />, div);
-    await ReactDOM.unmountComponentAtNode(div);
+it('renders correctly', async () => {
+    const home = renderer.create(<Home/>).toJSON();
+    expect(home).toMatchSnapshot();
 });
