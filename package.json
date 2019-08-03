@@ -24,7 +24,8 @@
       "!**/*.mock.ts",
       "!coverage/**",
       "!src/index.js",
-      "!src/serviceWorker.js"
+      "!src/serviceWorker.js",
+      "!config-overrides.js"
     ],
     "coverageReporters": [
       "lcov",
