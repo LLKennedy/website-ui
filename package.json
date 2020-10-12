@@ -26,6 +26,24 @@
   "eslintConfig": {
     "extends": "react-app"
   },
+  "jest": {
+    "collectCoverageFrom": [
+      "**/*.{ts,tsx,js,jsx}",
+      "!**/node_modules/**",
+      "!**/build/**",
+      "!**/definitionfiles/**",
+      "!**/WebWorkers/**",
+      "!**/*.mock.ts",
+      "!coverage/**",
+      "!src/index.tsx",
+      "!src/serviceWorker.ts",
+      "!config-overrides.js"
+    ],
+    "coverageReporters": [
+      "lcov",
+      "text"
+    ]
+  },
   "browserslist": {
     "production": [
       ">0.2%",
