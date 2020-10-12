@@ -1,8 +1,9 @@
 import React from 'react';
 import Home from './Home';
-import renderer from 'react-test-renderer';
+import ReactDOM from 'react-dom';
 
 it('renders correctly', async () => {
-    const home = renderer.create(<Home/>).toJSON();
+    const div = document.createElement('div');
+    const home = ReactDOM.render(<Home />, div);
     expect(home).toMatchSnapshot();
 });
