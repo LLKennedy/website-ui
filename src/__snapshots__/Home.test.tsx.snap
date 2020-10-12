@@ -16,11 +16,21 @@ Object {
           I write code for fun and profit.
           <br />
           <a
+            class="Home-link"
             href="https://www.github.com/LLKennedy"
           >
             Here's my Github!
           </a>
         </header>
+        <div
+          class="Detail"
+        >
+          <header
+            class="Detail-basics"
+          >
+            I'm a software developer and systems integrator. I have experience designing, implementing, maintaining, operating and upgrading software for its entire lifecycle.
+          </header>
+        </div>
       </div>
     </div>
   </body>,
@@ -36,11 +46,21 @@ Object {
         I write code for fun and profit.
         <br />
         <a
+          class="Home-link"
           href="https://www.github.com/LLKennedy"
         >
           Here's my Github!
         </a>
       </header>
+      <div
+        class="Detail"
+      >
+        <header
+          class="Detail-basics"
+        >
+          I'm a software developer and systems integrator. I have experience designing, implementing, maintaining, operating and upgrading software for its entire lifecycle.
+        </header>
+      </div>
     </div>
   </div>,
   "debug": [Function],
