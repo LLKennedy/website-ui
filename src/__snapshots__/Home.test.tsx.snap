@@ -1,353 +1,11 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`renders correctly 1`] = `
-Home {
-  "_reactInternalFiber": FiberNode {
-    "_debugHookTypes": null,
-    "_debugID": 4,
-    "_debugIsCurrentlyTiming": false,
-    "_debugNeedsRemount": false,
-    "_debugOwner": null,
-    "_debugSource": Object {
-      "columnNumber": 34,
-      "fileName": "D:\\\\Source\\\\website-ui\\\\src\\\\Home.test.tsx",
-      "lineNumber": 7,
-    },
-    "actualDuration": 0,
-    "actualStartTime": -1,
-    "alternate": null,
-    "child": FiberNode {
-      "_debugHookTypes": null,
-      "_debugID": 6,
-      "_debugIsCurrentlyTiming": false,
-      "_debugNeedsRemount": false,
-      "_debugOwner": [Circular],
-      "_debugSource": Object {
-        "columnNumber": 9,
-        "fileName": "D:\\\\Source\\\\website-ui\\\\src\\\\Home.tsx",
-        "lineNumber": 7,
-      },
-      "actualDuration": 0,
-      "actualStartTime": -1,
-      "alternate": null,
-      "child": FiberNode {
-        "_debugHookTypes": null,
-        "_debugID": 8,
-        "_debugIsCurrentlyTiming": false,
-        "_debugNeedsRemount": false,
-        "_debugOwner": [Circular],
-        "_debugSource": Object {
-          "columnNumber": 13,
-          "fileName": "D:\\\\Source\\\\website-ui\\\\src\\\\Home.tsx",
-          "lineNumber": 8,
-        },
-        "actualDuration": 0,
-        "actualStartTime": -1,
-        "alternate": null,
-        "child": FiberNode {
-          "_debugHookTypes": null,
-          "_debugID": 10,
-          "_debugIsCurrentlyTiming": false,
-          "_debugNeedsRemount": false,
-          "_debugOwner": null,
-          "_debugSource": null,
-          "actualDuration": 0,
-          "actualStartTime": -1,
-          "alternate": null,
-          "child": null,
-          "childExpirationTime": 0,
-          "dependencies": null,
-          "effectTag": 0,
-          "elementType": null,
-          "expirationTime": 0,
-          "firstEffect": null,
-          "index": 0,
-          "key": null,
-          "lastEffect": null,
-          "memoizedProps": "Hi, I'm Luke Kennedy.",
-          "memoizedState": null,
-          "mode": 0,
-          "nextEffect": null,
-          "pendingProps": "Hi, I'm Luke Kennedy.",
-          "ref": null,
-          "return": [Circular],
-          "selfBaseDuration": 0,
-          "sibling": FiberNode {
-            "_debugHookTypes": null,
-            "_debugID": 11,
-            "_debugIsCurrentlyTiming": false,
-            "_debugNeedsRemount": false,
-            "_debugOwner": [Circular],
-            "_debugSource": Object {
-              "columnNumber": 38,
-              "fileName": "D:\\\\Source\\\\website-ui\\\\src\\\\Home.tsx",
-              "lineNumber": 9,
-            },
-            "actualDuration": 0,
-            "actualStartTime": -1,
-            "alternate": null,
-            "child": null,
-            "childExpirationTime": 0,
-            "dependencies": null,
-            "effectTag": 0,
-            "elementType": "br",
-            "expirationTime": 0,
-            "firstEffect": null,
-            "index": 1,
-            "key": null,
-            "lastEffect": null,
-            "memoizedProps": Object {},
-            "memoizedState": null,
-            "mode": 0,
-            "nextEffect": null,
-            "pendingProps": Object {},
-            "ref": null,
-            "return": [Circular],
-            "selfBaseDuration": 0,
-            "sibling": FiberNode {
-              "_debugHookTypes": null,
-              "_debugID": 12,
-              "_debugIsCurrentlyTiming": false,
-              "_debugNeedsRemount": false,
-              "_debugOwner": null,
-              "_debugSource": null,
-              "actualDuration": 0,
-              "actualStartTime": -1,
-              "alternate": null,
-              "child": null,
-              "childExpirationTime": 0,
-              "dependencies": null,
-              "effectTag": 0,
-              "elementType": null,
-              "expirationTime": 0,
-              "firstEffect": null,
-              "index": 2,
-              "key": null,
-              "lastEffect": null,
-              "memoizedProps": "I write code for fun and profit.",
-              "memoizedState": null,
-              "mode": 0,
-              "nextEffect": null,
-              "pendingProps": "I write code for fun and profit.",
-              "ref": null,
-              "return": [Circular],
-              "selfBaseDuration": 0,
-              "sibling": FiberNode {
-                "_debugHookTypes": null,
-                "_debugID": 13,
-                "_debugIsCurrentlyTiming": false,
-                "_debugNeedsRemount": false,
-                "_debugOwner": [Circular],
-                "_debugSource": Object {
-                  "columnNumber": 49,
-                  "fileName": "D:\\\\Source\\\\website-ui\\\\src\\\\Home.tsx",
-                  "lineNumber": 10,
-                },
-                "actualDuration": 0,
-                "actualStartTime": -1,
-                "alternate": null,
-                "child": null,
-                "childExpirationTime": 0,
-                "dependencies": null,
-                "effectTag": 0,
-                "elementType": "br",
-                "expirationTime": 0,
-                "firstEffect": null,
-                "index": 3,
-                "key": null,
-                "lastEffect": null,
-                "memoizedProps": Object {},
-                "memoizedState": null,
-                "mode": 0,
-                "nextEffect": null,
-                "pendingProps": Object {},
-                "ref": null,
-                "return": [Circular],
-                "selfBaseDuration": 0,
-                "sibling": FiberNode {
-                  "_debugHookTypes": null,
-                  "_debugID": 14,
-                  "_debugIsCurrentlyTiming": false,
-                  "_debugNeedsRemount": false,
-                  "_debugOwner": [Circular],
-                  "_debugSource": Object {
-                    "columnNumber": 17,
-                    "fileName": "D:\\\\Source\\\\website-ui\\\\src\\\\Home.tsx",
-                    "lineNumber": 11,
-                  },
-                  "actualDuration": 0,
-                  "actualStartTime": -1,
-                  "alternate": null,
-                  "child": null,
-                  "childExpirationTime": 0,
-                  "dependencies": null,
-                  "effectTag": 0,
-                  "elementType": "a",
-                  "expirationTime": 0,
-                  "firstEffect": null,
-                  "index": 4,
-                  "key": null,
-                  "lastEffect": null,
-                  "memoizedProps": Object {
-                    "children": "Here's my Github!",
-                    "href": "https://www.github.com/LLKennedy",
-                  },
-                  "memoizedState": null,
-                  "mode": 0,
-                  "nextEffect": null,
-                  "pendingProps": Object {
-                    "children": "Here's my Github!",
-                    "href": "https://www.github.com/LLKennedy",
-                  },
-                  "ref": null,
-                  "return": [Circular],
-                  "selfBaseDuration": 0,
-                  "sibling": null,
-                  "stateNode": <a
-                    href="https://www.github.com/LLKennedy"
-                  >
-                    Here's my Github!
-                  </a>,
-                  "tag": 5,
-                  "treeBaseDuration": 0,
-                  "type": "a",
-                  "updateQueue": null,
-                },
-                "stateNode": <br />,
-                "tag": 5,
-                "treeBaseDuration": 0,
-                "type": "br",
-                "updateQueue": null,
-              },
-              "stateNode": I write code for fun and profit.,
-              "tag": 6,
-              "treeBaseDuration": 0,
-              "type": null,
-              "updateQueue": null,
-            },
-            "stateNode": <br />,
-            "tag": 5,
-            "treeBaseDuration": 0,
-            "type": "br",
-            "updateQueue": null,
-          },
-          "stateNode": Hi, I'm Luke Kennedy.,
-          "tag": 6,
-          "treeBaseDuration": 0,
-          "type": null,
-          "updateQueue": null,
-        },
-        "childExpirationTime": 0,
-        "dependencies": null,
-        "effectTag": 0,
-        "elementType": "header",
-        "expirationTime": 0,
-        "firstEffect": null,
-        "index": 0,
-        "key": null,
-        "lastEffect": null,
-        "memoizedProps": Object {
-          "children": Array [
-            "Hi, I'm Luke Kennedy.",
-            <br />,
-            "I write code for fun and profit.",
-            <br />,
-            <a
-              href="https://www.github.com/LLKennedy"
-            >
-              Here's my Github!
-            </a>,
-          ],
-          "className": "Home-header",
-        },
-        "memoizedState": null,
-        "mode": 0,
-        "nextEffect": null,
-        "pendingProps": Object {
-          "children": Array [
-            "Hi, I'm Luke Kennedy.",
-            <br />,
-            "I write code for fun and profit.",
-            <br />,
-            <a
-              href="https://www.github.com/LLKennedy"
-            >
-              Here's my Github!
-            </a>,
-          ],
-          "className": "Home-header",
-        },
-        "ref": null,
-        "return": [Circular],
-        "selfBaseDuration": 0,
-        "sibling": null,
-        "stateNode": <header
-          class="Home-header"
-        >
-          Hi, I'm Luke Kennedy.
-          <br />
-          I write code for fun and profit.
-          <br />
-          <a
-            href="https://www.github.com/LLKennedy"
-          >
-            Here's my Github!
-          </a>
-        </header>,
-        "tag": 5,
-        "treeBaseDuration": 0,
-        "type": "header",
-        "updateQueue": null,
-      },
-      "childExpirationTime": 0,
-      "dependencies": null,
-      "effectTag": 0,
-      "elementType": "div",
-      "expirationTime": 0,
-      "firstEffect": null,
-      "index": 0,
-      "key": null,
-      "lastEffect": null,
-      "memoizedProps": Object {
-        "children": <header
-          className="Home-header"
-        >
-          Hi, I'm Luke Kennedy.
-          <br />
-          I write code for fun and profit.
-          <br />
-          <a
-            href="https://www.github.com/LLKennedy"
-          >
-            Here's my Github!
-          </a>
-        </header>,
-        "className": "Home",
-      },
-      "memoizedState": null,
-      "mode": 0,
-      "nextEffect": null,
-      "pendingProps": Object {
-        "children": <header
-          className="Home-header"
-        >
-          Hi, I'm Luke Kennedy.
-          <br />
-          I write code for fun and profit.
-          <br />
-          <a
-            href="https://www.github.com/LLKennedy"
-          >
-            Here's my Github!
-          </a>
-        </header>,
-        "className": "Home",
-      },
-      "ref": null,
-      "return": [Circular],
-      "selfBaseDuration": 0,
-      "sibling": null,
-      "stateNode": <div
+Object {
+  "asFragment": [Function],
+  "baseElement": <body>
+    <div>
+      <div
         class="Home"
       >
         <header
@@ -363,233 +21,78 @@ Home {
             Here's my Github!
           </a>
         </header>
-      </div>,
-      "tag": 5,
-      "treeBaseDuration": 0,
-      "type": "div",
-      "updateQueue": null,
-    },
-    "childExpirationTime": 0,
-    "dependencies": null,
-    "effectTag": 1,
-    "elementType": [Function],
-    "expirationTime": 0,
-    "firstEffect": null,
-    "index": 0,
-    "key": null,
-    "lastEffect": null,
-    "memoizedProps": Object {},
-    "memoizedState": null,
-    "mode": 0,
-    "nextEffect": null,
-    "pendingProps": Object {},
-    "ref": null,
-    "return": FiberNode {
-      "_debugHookTypes": null,
-      "_debugID": 1,
-      "_debugIsCurrentlyTiming": false,
-      "_debugNeedsRemount": false,
-      "_debugOwner": null,
-      "_debugSource": null,
-      "actualDuration": 0,
-      "actualStartTime": -1,
-      "alternate": FiberNode {
-        "_debugHookTypes": null,
-        "_debugID": 1,
-        "_debugIsCurrentlyTiming": false,
-        "_debugNeedsRemount": false,
-        "_debugOwner": null,
-        "_debugSource": null,
-        "actualDuration": 0,
-        "actualStartTime": -1,
-        "alternate": [Circular],
-        "child": null,
-        "childExpirationTime": 0,
-        "dependencies": null,
-        "effectTag": 0,
-        "elementType": null,
-        "expirationTime": 1073741823,
-        "firstEffect": null,
-        "index": 0,
-        "key": null,
-        "lastEffect": null,
-        "memoizedProps": null,
-        "memoizedState": null,
-        "mode": 0,
-        "nextEffect": null,
-        "pendingProps": null,
-        "ref": null,
-        "return": null,
-        "selfBaseDuration": 0,
-        "sibling": null,
-        "stateNode": FiberRootNode {
-          "callbackExpirationTime": 0,
-          "callbackNode": null,
-          "callbackPriority": 90,
-          "containerInfo": <div>
-            <div
-              class="Home"
-            >
-              <header
-                class="Home-header"
-              >
-                Hi, I'm Luke Kennedy.
-                <br />
-                I write code for fun and profit.
-                <br />
-                <a
-                  href="https://www.github.com/LLKennedy"
-                >
-                  Here's my Github!
-                </a>
-              </header>
-            </div>
-          </div>,
-          "context": Object {},
-          "current": [Circular],
-          "finishedExpirationTime": 0,
-          "finishedWork": null,
-          "firstPendingTime": 0,
-          "firstSuspendedTime": 0,
-          "hydrate": false,
-          "interactionThreadID": 1,
-          "lastExpiredTime": 0,
-          "lastPingedTime": 0,
-          "lastSuspendedTime": 0,
-          "memoizedInteractions": Set {},
-          "nextKnownPendingLevel": 0,
-          "pendingChildren": null,
-          "pendingContext": null,
-          "pendingInteractionMap": Map {},
-          "pingCache": null,
-          "tag": 0,
-          "timeoutHandle": -1,
-        },
-        "tag": 3,
-        "treeBaseDuration": 0,
-        "type": null,
-        "updateQueue": Object {
-          "baseQueue": Object {
-            "callback": null,
-            "expirationTime": 1073741823,
-            "next": [Circular],
-            "payload": Object {
-              "element": <Home />,
-            },
-            "priority": 97,
-            "suspenseConfig": null,
-            "tag": 0,
-          },
-          "baseState": null,
-          "effects": null,
-          "shared": Object {
-            "pending": null,
-          },
-        },
-      },
-      "child": [Circular],
-      "childExpirationTime": 0,
-      "dependencies": null,
-      "effectTag": 0,
-      "elementType": null,
-      "expirationTime": 0,
-      "firstEffect": [Circular],
-      "index": 0,
-      "key": null,
-      "lastEffect": [Circular],
-      "memoizedProps": null,
-      "memoizedState": Object {
-        "element": <Home />,
-      },
-      "mode": 0,
-      "nextEffect": null,
-      "pendingProps": null,
-      "ref": null,
-      "return": null,
-      "selfBaseDuration": 0,
-      "sibling": null,
-      "stateNode": FiberRootNode {
-        "callbackExpirationTime": 0,
-        "callbackNode": null,
-        "callbackPriority": 90,
-        "containerInfo": <div>
-          <div
-            class="Home"
-          >
-            <header
-              class="Home-header"
-            >
-              Hi, I'm Luke Kennedy.
-              <br />
-              I write code for fun and profit.
-              <br />
-              <a
-                href="https://www.github.com/LLKennedy"
-              >
-                Here's my Github!
-              </a>
-            </header>
-          </div>
-        </div>,
-        "context": Object {},
-        "current": [Circular],
-        "finishedExpirationTime": 0,
-        "finishedWork": null,
-        "firstPendingTime": 0,
-        "firstSuspendedTime": 0,
-        "hydrate": false,
-        "interactionThreadID": 1,
-        "lastExpiredTime": 0,
-        "lastPingedTime": 0,
-        "lastSuspendedTime": 0,
-        "memoizedInteractions": Set {},
-        "nextKnownPendingLevel": 0,
-        "pendingChildren": null,
-        "pendingContext": null,
-        "pendingInteractionMap": Map {},
-        "pingCache": null,
-        "tag": 0,
-        "timeoutHandle": -1,
-      },
-      "tag": 3,
-      "treeBaseDuration": 0,
-      "type": null,
-      "updateQueue": Object {
-        "baseQueue": null,
-        "baseState": Object {
-          "element": <Home />,
-        },
-        "effects": null,
-        "shared": Object {
-          "pending": null,
-        },
-      },
-    },
-    "selfBaseDuration": 0,
-    "sibling": null,
-    "stateNode": [Circular],
-    "tag": 1,
-    "treeBaseDuration": 0,
-    "type": [Function],
-    "updateQueue": Object {
-      "baseQueue": null,
-      "baseState": null,
-      "effects": null,
-      "shared": Object {
-        "pending": null,
-      },
-    },
-  },
-  "_reactInternalInstance": Object {},
-  "context": Object {},
-  "props": Object {},
-  "refs": Object {},
-  "state": null,
-  "updater": Object {
-    "enqueueForceUpdate": [Function],
-    "enqueueReplaceState": [Function],
-    "enqueueSetState": [Function],
-    "isMounted": [Function],
-  },
+      </div>
+    </div>
+  </body>,
+  "container": <div>
+    <div
+      class="Home"
+    >
+      <header
+        class="Home-header"
+      >
+        Hi, I'm Luke Kennedy.
+        <br />
+        I write code for fun and profit.
+        <br />
+        <a
+          href="https://www.github.com/LLKennedy"
+        >
+          Here's my Github!
+        </a>
+      </header>
+    </div>
+  </div>,
+  "debug": [Function],
+  "findAllByAltText": [Function],
+  "findAllByDisplayValue": [Function],
+  "findAllByLabelText": [Function],
+  "findAllByPlaceholderText": [Function],
+  "findAllByRole": [Function],
+  "findAllByTestId": [Function],
+  "findAllByText": [Function],
+  "findAllByTitle": [Function],
+  "findByAltText": [Function],
+  "findByDisplayValue": [Function],
+  "findByLabelText": [Function],
+  "findByPlaceholderText": [Function],
+  "findByRole": [Function],
+  "findByTestId": [Function],
+  "findByText": [Function],
+  "findByTitle": [Function],
+  "getAllByAltText": [Function],
+  "getAllByDisplayValue": [Function],
+  "getAllByLabelText": [Function],
+  "getAllByPlaceholderText": [Function],
+  "getAllByRole": [Function],
+  "getAllByTestId": [Function],
+  "getAllByText": [Function],
+  "getAllByTitle": [Function],
+  "getByAltText": [Function],
+  "getByDisplayValue": [Function],
+  "getByLabelText": [Function],
+  "getByPlaceholderText": [Function],
+  "getByRole": [Function],
+  "getByTestId": [Function],
+  "getByText": [Function],
+  "getByTitle": [Function],
+  "queryAllByAltText": [Function],
+  "queryAllByDisplayValue": [Function],
+  "queryAllByLabelText": [Function],
+  "queryAllByPlaceholderText": [Function],
+  "queryAllByRole": [Function],
+  "queryAllByTestId": [Function],
+  "queryAllByText": [Function],
+  "queryAllByTitle": [Function],
+  "queryByAltText": [Function],
+  "queryByDisplayValue": [Function],
+  "queryByLabelText": [Function],
+  "queryByPlaceholderText": [Function],
+  "queryByRole": [Function],
+  "queryByTestId": [Function],
+  "queryByText": [Function],
+  "queryByTitle": [Function],
+  "rerender": [Function],
+  "unmount": [Function],
 }
 `;
