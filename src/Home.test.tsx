@@ -1,8 +1,8 @@
 import React from 'react';
 import Home from './Home';
-import renderer from 'react-test-renderer';
+import { render } from '@testing-library/react';
 
 it('renders correctly', async () => {
-    const home = renderer.create(<Home/>).toJSON();
+    const home = render(<Home />);
     expect(home).toMatchSnapshot();
 });
