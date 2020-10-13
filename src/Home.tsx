@@ -1,6 +1,7 @@
 import React from 'react';
 import './Home.css'
 import Detail from './Detail';
+import Technologies from './Technologies';
 
 export default class Home extends React.Component {
     render() {
@@ -13,6 +14,7 @@ export default class Home extends React.Component {
                     You can also keep scrolling for more about me.
                 </header>
                 <Detail />
+                <Technologies />
             </div>
         )
     }
