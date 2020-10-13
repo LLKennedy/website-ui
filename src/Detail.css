@@ -1,18 +1,26 @@
 .Detail {
   text-align: center;
-}
-
-.Detail-basics {
   background: #a7edfa; /* fallback for old browsers*/
   background: -webkit-linear-gradient(top, #a7edfa 0%, #8ce6ee 25%, #f0c5df 75%, #c86d95 100%);
   background: -moz-linear-gradient(top, #a7edfa 0%, #8ce6ee 25%, #f0c5df 75%, #c86d95 100%);
   background: linear-gradient(to bottom, #a7edfa 0%, #8ce6ee 25%, #f0c5df 75%, #c86d95 100%);
+}
+
+.Detail-basics {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
+}
+
+.Detail-text {
+  font-size: calc(10px + 2vmin);
   color: rgb(255, 123, 71);
-  outline: rgb(255, 94, 0);
+  --shadow-color: #00ccff;
+  --shadow-color-light: rgb(12, 0, 63);
+  text-shadow: -1px -1px 1px var(--shadow-color-light), -1px 1px 1px var(--shadow-color-light), 1px -1px 1px var(--shadow-color-light), 1px 1px 1px var(--shadow-color-light),
+    0 0 3px var(--shadow-color-light), 0 0 10px var(--shadow-color-light), 0 0 20px var(--shadow-color-light),
+    0 0 30px var(--shadow-color), 0 0 40px var(--shadow-color), 0 0 50px var(--shadow-color), 0 0 70px var(--shadow-color), 0 0 100px var(--shadow-color), 0 0 200px var(--shadow-color);
 }

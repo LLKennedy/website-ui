@@ -11,11 +11,13 @@
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
+  mix-blend-mode: screen;
   color: white;
-  text-shadow: 0.7vmin 0.7vmin #090172;
+  text-shadow: 0.4vmin 0.4vmin #090172;
 }
 
 .Home-link {
   color: rgb(146, 224, 255);
-  text-shadow: 0.7vmin 0.7vmin #090172;
+  mix-blend-mode: screen;
+  text-shadow: 0.4vmin 0.4vmin #090172;
 }
