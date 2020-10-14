@@ -14,7 +14,7 @@ export default class Home extends React.Component {
                     You can also keep scrolling for more about me.
                 </header>
                 <Detail />
-                <Technologies horizontalBars={30} />
+                <Technologies />
             </div>
         )
     }
