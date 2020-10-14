@@ -21,15 +21,33 @@ Object {
           >
             Here's my Github!
           </a>
+          You can also keep scrolling for more about me.
         </header>
         <div
           class="Detail"
         >
-          <header
+          <span
             class="Detail-basics"
           >
-            I'm a software developer and systems integrator. I have experience designing, implementing, maintaining, operating and upgrading software for its entire lifecycle.
-          </header>
+            <header
+              class="Detail-text"
+            >
+              I'm a software developer and systems integrator. I have experience designing, implementing, maintaining, operating and upgrading software for its entire lifecycle.
+            </header>
+            <br />
+            <header
+              class="Detail-text"
+            >
+              I enjoy sci-fi and fantasy novels, the entire audiovisual aesthetic of Synthwave/Vaporwave, and thought provoking or artistic video games such as Outer Wilds, Riven, KSP and Transistor.
+            </header>
+          </span>
+        </div>
+        <div
+          class="Technologies"
+        >
+          <canvas
+            class="Technologies-canvas"
+          />
         </div>
       </div>
     </div>
@@ -51,15 +69,33 @@ Object {
         >
           Here's my Github!
         </a>
+        You can also keep scrolling for more about me.
       </header>
       <div
         class="Detail"
       >
-        <header
+        <span
           class="Detail-basics"
         >
-          I'm a software developer and systems integrator. I have experience designing, implementing, maintaining, operating and upgrading software for its entire lifecycle.
-        </header>
+          <header
+            class="Detail-text"
+          >
+            I'm a software developer and systems integrator. I have experience designing, implementing, maintaining, operating and upgrading software for its entire lifecycle.
+          </header>
+          <br />
+          <header
+            class="Detail-text"
+          >
+            I enjoy sci-fi and fantasy novels, the entire audiovisual aesthetic of Synthwave/Vaporwave, and thought provoking or artistic video games such as Outer Wilds, Riven, KSP and Transistor.
+          </header>
+        </span>
+      </div>
+      <div
+        class="Technologies"
+      >
+        <canvas
+          class="Technologies-canvas"
+        />
       </div>
     </div>
   </div>,
