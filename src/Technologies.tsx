@@ -2,12 +2,11 @@ import React from 'react';
 import './Technologies.css'
 
 export interface TechnologiesProps {
-    horizontalBars?: number;
-    verticalBars?: number;
-    scrollSpeed?: number;
-    horizonHeightPercent?: number;
+    horizontalBars: number;
+    verticalBars: number;
+    scrollSpeed: number;
+    horizonHeightPercent: number;
 }
-const framesPerStep = 30;
 
 interface TechnologiesState {
     step: number;
@@ -16,9 +15,9 @@ interface TechnologiesState {
 
 export default class Technologies extends React.Component<TechnologiesProps, TechnologiesState> {
     public static defaultProps = {
-        horizontalBars: 40,
-        verticalBars: 40,
-        scrollSpeed: 10,
+        horizontalBars: 25,
+        verticalBars: 20,
+        scrollSpeed: 30,
         horizonHeightPercent: 60
     }
     // ctx: CanvasRenderingContext2D;
@@ -69,23 +68,22 @@ export default class Technologies extends React.Component<TechnologiesProps, Tec
         context.fillStyle = "red";
         context.arc(50, 50, 50, 0, 2 * Math.PI);
         context.fill();
-        drawLines(context, canvas.height, canvas.width, this.props.horizontalBars as number, this.props.horizonHeightPercent as number, this.state.step);
+        drawLines(context, canvas.height, canvas.width, this.props, this.state);
         this.setState({
-            step: (this.state.step + 1) % (this.props.horizontalBars as number * framesPerStep)
+            step: (this.state.step + 1) % this.props.scrollSpeed
         })
         requestAnimationFrame(this.paint);
     }
 }
 
-function drawLines(ctx: CanvasRenderingContext2D, height: number, width: number, numBars: number, horizonPercent: number, step: number) {
+function drawLines(ctx: CanvasRenderingContext2D, height: number, width: number, props: Readonly<TechnologiesProps>, state: Readonly<TechnologiesState>) {
     ctx.lineWidth = 1;
-    const expbase = 1.3;
-    let upperLim = (horizonPercent / 100) * height
-    let toBottom = Math.log2(height - upperLim) / Math.log2(expbase);
+    let upperLim = (props.horizonHeightPercent / 100) * height
+    let toBottom = Math.log2(height - upperLim)
     drawHorizontalLine(ctx, upperLim, width, "magenta");
-    let frameBars = numBars * framesPerStep
-    for (let i = 0; i < numBars; i++) {
-        let stepLineY = Math.pow(expbase, toBottom * (((step + (i * framesPerStep)) % frameBars)) / frameBars)
+    let frameBars = props.horizontalBars * props.scrollSpeed
+    for (let i = 0; i < props.horizontalBars; i++) {
+        let stepLineY = Math.pow(2, toBottom * (((state.step + (i * props.scrollSpeed)) % frameBars)) / frameBars)
         drawHorizontalLine(ctx, upperLim + stepLineY, width, "magenta");
     }
 }
