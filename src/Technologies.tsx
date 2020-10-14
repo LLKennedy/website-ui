@@ -55,8 +55,8 @@ export default class Technologies extends React.Component<TechnologiesProps, Tec
             return
         }
         canvas = canvas as HTMLCanvasElement;
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
+        canvas.width = canvas.clientWidth;
+        canvas.height = canvas.clientHeight;
         let context = canvas.getContext("2d");
         if (context === null) {
             return
