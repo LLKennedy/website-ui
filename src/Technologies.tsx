@@ -16,16 +16,46 @@ interface TechnologiesState {
     canvasRef: React.RefObject<HTMLCanvasElement>;
 }
 
+interface techIcon {
+    techURL: string;
+    imgURL: string;
+    name: string;
+}
+
 const scrollMultiplier = 900;
+const Text1 = "I'm a software developer and systems integrator. I have experience designing, implementing, maintaining, operating and upgrading software for its entire lifecycle. These are a few of the technologies I use on a regular basis:"
+const Text2 = "Besides my technical skills, I enjoy sci-fi and fantasy novels, the entire audiovisual aesthetic of Synthwave/Vaporwave, and thought-provoking or artistic video games such as Outer Wilds, Riven, KSP and Transistor."
+const technologies: techIcon[] = [
+    {
+        name: "React",
+        techURL: "https://reactjs.org/",
+        imgURL: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/1200px-React-icon.svg.png",
+    },
+    {
+        name: "Node.JS",
+        techURL: "https://nodejs.org/",
+        imgURL: "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d9/Node.js_logo.svg/1920px-Node.js_logo.svg.png",
+    },
+    {
+        name: "Go",
+        techURL: "https://golang.org/",
+        imgURL: "https://upload.wikimedia.org/wikipedia/commons/thumb/2/23/Go_Logo_Aqua.svg/1200px-Go_Logo_Aqua.svg.png",
+    },
+    {
+        name: ".NET Core",
+        techURL: "https://dotnet.microsoft.com/",
+        imgURL: "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ee/.NET_Core_Logo.svg/1200px-.NET_Core_Logo.svg.png",
+    },
+];
 
 export default class Technologies extends React.Component<TechnologiesProps, TechnologiesState> {
     public static defaultProps: TechnologiesProps = {
         horizontalBars: 25,
         verticalBars: 80,
-        verticalBarGapPercent: 10,
+        verticalBarGapPercent: 7,
         scrollSpeed: 30,
-        horizonHeightPercent: 40,
-        vanishingPointHeightExtraPercent: 7,
+        horizonHeightPercent: 20,
+        vanishingPointHeightExtraPercent: 5,
         lineStyle: "magenta"
     }
     // ctx: CanvasRenderingContext2D;
@@ -39,16 +69,24 @@ export default class Technologies extends React.Component<TechnologiesProps, Tec
         this.frames = this.frames.bind(this);
     }
     render() {
-        // useEffect(() => {
-        //     let canvas = this?.state?.canvasRef.current;
-        //     let context = canvas?.getContext("2d");
-        //     context?.beginPath();
-        //     context?.arc(50, 50, 50, 0, 2 * Math.PI);
-        //     context?.fill();
-        // })
         return (
             <div className="Technologies">
                 <canvas ref={this?.state?.canvasRef} className="Technologies-canvas" />
+                <div className="Technologies-overlay">
+                    <div className="Technologies-textwrapper">
+                        <header className="Technologies-text">{Text1}</header>
+                        <div className="Technologies-icons">
+                            {technologies.map(tech => {
+                                return (
+                                    <a href={tech.techURL}>
+                                        <img className="Technologies-img" alt={tech.name} src={tech.imgURL} />
+                                    </a>
+                                );
+                            })}
+                        </div>
+                        <header className="Technologies-text">{Text2}</header>
+                    </div>
+                </div>
             </div>
         )
     }
@@ -67,7 +105,6 @@ export default class Technologies extends React.Component<TechnologiesProps, Tec
         if (context === null) {
             return
         }
-        // context.scale(window.devicePixelRatio, window.devicePixelRatio);
         context.clearRect(0, 0, canvas.width, canvas.height);
         if (context.fillStyle) {
             context.fillStyle = "black";

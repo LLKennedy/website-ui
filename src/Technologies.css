@@ -1,4 +1,5 @@
 .Technologies {
+  position: relative;
   min-height: 100vh;
   max-height: 100vh;
 }
@@ -9,4 +10,46 @@
   max-height: 100vh;
   min-width: 100%;
   max-width: 100%;
+}
+
+.Technologies-overlay {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+}
+
+.Technologies-textwrapper {
+  min-height: 80vh;
+  max-height: 80vh;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+}
+
+.Technologies-icons {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+.Technologies-img {
+  max-height: 10vh;
+  max-width: 10vh;
+  margin-left: 0.5vh;
+  margin-right: 0.5vh;
+}
+
+
+.Technologies-text {
+  font-size: calc(10px + 2vmin);
+  font-size: calc(10px + 2vmin);
+  color: rgb(0, 183, 255);
+  --shadow-color: #00ccff;
+  --shadow-color-light: rgb(31, 0, 168);
+  text-shadow: -1px -1px 1px var(--shadow-color-light), -1px 1px 1px var(--shadow-color-light), 1px -1px 1px var(--shadow-color-light), 1px 1px 1px var(--shadow-color-light),
+    0 0 3px var(--shadow-color-light), 0 0 10px var(--shadow-color-light)
 }
