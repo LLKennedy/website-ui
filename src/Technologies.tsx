@@ -4,9 +4,11 @@ import './Technologies.css'
 export interface TechnologiesProps {
     horizontalBars: number;
     verticalBars: number;
+    verticalBarGapPercent: number;
     scrollSpeed: number;
     horizonHeightPercent: number;
     vanishingPointHeightExtraPercent: number;
+    lineStyle: string | CanvasGradient | CanvasPattern;
 }
 
 interface TechnologiesState {
@@ -19,10 +21,12 @@ const scrollMultiplier = 900;
 export default class Technologies extends React.Component<TechnologiesProps, TechnologiesState> {
     public static defaultProps: TechnologiesProps = {
         horizontalBars: 25,
-        verticalBars: 40,
+        verticalBars: 80,
+        verticalBarGapPercent: 10,
         scrollSpeed: 30,
         horizonHeightPercent: 40,
-        vanishingPointHeightExtraPercent: 5
+        vanishingPointHeightExtraPercent: 7,
+        lineStyle: "magenta"
     }
     // ctx: CanvasRenderingContext2D;
     constructor(props: TechnologiesProps | Readonly<TechnologiesProps>) {
@@ -88,17 +92,17 @@ function drawLines(ctx: CanvasRenderingContext2D, height: number, width: number,
     ctx.lineWidth = 1;
     const upperLim = (1 - (props.horizonHeightPercent / 100)) * height
     const toBottom = Math.log2(height - upperLim)
-    const lineStyle = "magenta";
-    drawHorizontalLine(ctx, upperLim, width, lineStyle);
+    drawHorizontalLine(ctx, upperLim, width, props.lineStyle);
     const frameBars = props.horizontalBars * scrollMultiplier / props.scrollSpeed
     for (let i = 0; i < props.horizontalBars; i++) {
         const stepLineY = Math.pow(2, toBottom * (((state.step + (i * scrollMultiplier / props.scrollSpeed)) % frameBars)) / frameBars)
-        drawHorizontalLine(ctx, upperLim + stepLineY, width, lineStyle);
+        drawHorizontalLine(ctx, upperLim + stepLineY, width, props.lineStyle);
     }
+    const oneGap = (props.verticalBarGapPercent / 100) * width;
+    const totalWidth = (props.verticalBars - 1) * oneGap;
+    const vertStart = (-totalWidth / 2) + (width / 2);
     for (let i = 0; i < props.verticalBars; i++) {
-        const angle = Math.PI * (i + 1) / (props.verticalBars + 1);
-        // console.log(angle);
-        drawVerticalLine(ctx, height, (props.vanishingPointHeightExtraPercent / 100) * height, width, upperLim, angle, lineStyle);
+        drawVerticalLine(ctx, height, (props.vanishingPointHeightExtraPercent / 100) * height, width, upperLim, vertStart + (i * oneGap), props.lineStyle);
     }
 }
 
@@ -110,15 +114,16 @@ function drawHorizontalLine(ctx: CanvasRenderingContext2D, height: number, width
     ctx.stroke();
 }
 
-function drawVerticalLine(ctx: CanvasRenderingContext2D, height: number, vanishingExtraHeight: number, width: number, originY: number, angle: number, stroke: string | CanvasGradient | CanvasPattern) {
+function drawVerticalLine(ctx: CanvasRenderingContext2D, height: number, vanishingExtraHeight: number, width: number, originY: number, startX: number, stroke: string | CanvasGradient | CanvasPattern) {
     ctx.strokeStyle = stroke;
-    const halfWidth = width / 2;
+    const originX = width / 2;
     const horizonHeight = height - originY;
     const vanishingHeight = horizonHeight + vanishingExtraHeight;
-    const partialX = halfWidth + (vanishingExtraHeight / Math.tan(angle));
-    const dstX = halfWidth + (vanishingHeight / Math.tan(angle));
+    const angle = Math.atan(vanishingHeight / (originX - startX));
+    // const partialX = startX + (vanishingExtraHeight / Math.tan(angle));
+    const dstX = startX + (horizonHeight / Math.tan(angle));
     ctx.beginPath();
-    ctx.moveTo(partialX, originY);
-    ctx.lineTo(dstX, height);
+    ctx.moveTo(startX, height);
+    ctx.lineTo(dstX, originY);
     ctx.stroke();
 }
