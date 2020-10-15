@@ -6,6 +6,7 @@ export interface TechnologiesProps {
     verticalBars: number;
     scrollSpeed: number;
     horizonHeightPercent: number;
+    vanishingPointHeightExtraPercent: number;
 }
 
 interface TechnologiesState {
@@ -16,11 +17,12 @@ interface TechnologiesState {
 const scrollMultiplier = 900;
 
 export default class Technologies extends React.Component<TechnologiesProps, TechnologiesState> {
-    public static defaultProps = {
+    public static defaultProps: TechnologiesProps = {
         horizontalBars: 25,
-        verticalBars: 20,
+        verticalBars: 40,
         scrollSpeed: 30,
-        horizonHeightPercent: 40
+        horizonHeightPercent: 40,
+        vanishingPointHeightExtraPercent: 5
     }
     // ctx: CanvasRenderingContext2D;
     constructor(props: TechnologiesProps | Readonly<TechnologiesProps>) {
@@ -94,9 +96,9 @@ function drawLines(ctx: CanvasRenderingContext2D, height: number, width: number,
         drawHorizontalLine(ctx, upperLim + stepLineY, width, lineStyle);
     }
     for (let i = 0; i < props.verticalBars; i++) {
-        const angle = Math.PI * (i + 1) / (props.verticalBars + 2);
+        const angle = Math.PI * (i + 1) / (props.verticalBars + 1);
         // console.log(angle);
-        drawVerticalLine(ctx, height, width, upperLim, angle, lineStyle);
+        drawVerticalLine(ctx, height, (props.vanishingPointHeightExtraPercent / 100) * height, width, upperLim, angle, lineStyle);
     }
 }
 
@@ -108,27 +110,15 @@ function drawHorizontalLine(ctx: CanvasRenderingContext2D, height: number, width
     ctx.stroke();
 }
 
-function drawVerticalLine(ctx: CanvasRenderingContext2D, height: number, width: number, originY: number, angle: number, stroke: string | CanvasGradient | CanvasPattern) {
+function drawVerticalLine(ctx: CanvasRenderingContext2D, height: number, vanishingExtraHeight: number, width: number, originY: number, angle: number, stroke: string | CanvasGradient | CanvasPattern) {
     ctx.strokeStyle = stroke;
     const halfWidth = width / 2;
     const horizonHeight = height - originY;
-    const maxHeight = Math.abs(Math.tan(angle)) * halfWidth;
-    let dstX = 0;
-    let dstY = 0;
-    if (maxHeight > horizonHeight) {
-        dstY = height;
-        dstX = halfWidth + Math.tan(angle) * dstY;
-    } else {
-        if (angle < Math.PI / 2 && angle >= -Math.PI / 2) {
-            dstX = width;
-        } else {
-            dstX = 0;
-        }
-        dstY = originY + maxHeight;
-    }
+    const vanishingHeight = horizonHeight + vanishingExtraHeight;
+    const partialX = halfWidth + (vanishingExtraHeight / Math.tan(angle));
+    const dstX = halfWidth + (vanishingHeight / Math.tan(angle));
     ctx.beginPath();
-    ctx.moveTo(halfWidth, originY);
-    // console.log(dstX, dstY);
-    ctx.lineTo(dstX, dstY);
+    ctx.moveTo(partialX, originY);
+    ctx.lineTo(dstX, height);
     ctx.stroke();
 }
