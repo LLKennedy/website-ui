@@ -1,6 +1,6 @@
 import React from 'react';
 import './Home.css'
-import Detail from './Detail';
+// import Detail from './Detail';
 import Technologies from './Technologies';
 
 export default class Home extends React.Component {
@@ -13,7 +13,7 @@ export default class Home extends React.Component {
                     <a href="https://www.github.com/LLKennedy" className="Home-link">Here's my Github!</a>
                     You can also keep scrolling for more about me.
                 </header>
-                <Detail />
+                {/* <Detail /> */}
                 <Technologies />
             </div>
         )

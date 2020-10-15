@@ -27,19 +27,34 @@ const Text1 = "I'm a software developer and systems integrator. I have experienc
 const Text2 = "Besides my technical skills, I enjoy sci-fi and fantasy novels, the entire audiovisual aesthetic of Synthwave/Vaporwave, and thought-provoking or artistic video games such as Outer Wilds, Riven, KSP and Transistor."
 const technologies: techIcon[] = [
     {
-        name: "React",
-        techURL: "https://reactjs.org/",
-        imgURL: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/1200px-React-icon.svg.png",
+        name: "Bash",
+        techURL: "https://www.gnu.org/software/bash/",
+        imgURL: "https://www.linuxjournal.com/sites/default/files/styles/850x500/public/nodeimage/story/Gnu-bash-logo_1.png",
     },
     {
-        name: "Node.JS",
-        techURL: "https://nodejs.org/",
-        imgURL: "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d9/Node.js_logo.svg/1920px-Node.js_logo.svg.png",
+        name: "CentOS",
+        techURL: "https://www.centos.org/",
+        imgURL: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9e/CentOS_Graphical_Symbol.svg/1024px-CentOS_Graphical_Symbol.svg.png",
     },
     {
-        name: "TypeScript",
-        techURL: "https://www.typescriptlang.org/",
-        imgURL: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a6/TypeScript_Logo.png/220px-TypeScript_Logo.png",
+        name: "Consul",
+        techURL: "https://www.consul.io/",
+        imgURL: "https://i1.wp.com/www.stefreitag.de/wp/wp-content/uploads/2019/01/consul-vertical-color.png?resize=678%2C675&ssl=1",
+    },
+    {
+        name: "Docker",
+        techURL: "https://www.docker.com/",
+        imgURL: "https://www.docker.com/sites/default/files/mono-vertical.png",
+    },
+    {
+        name: "GitHub",
+        techURL: "https://github.com/",
+        imgURL: "https://maxcdn.icons8.com/Share/icon/nolan/logos/github1600.png",
+    },
+    {
+        name: "GitLab",
+        techURL: "https://gitlab.com",
+        imgURL: "https://upload.wikimedia.org/wikipedia/commons/1/18/GitLab_Logo.svg",
     },
     {
         name: "Go",
@@ -52,69 +67,54 @@ const technologies: techIcon[] = [
         imgURL: "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ee/.NET_Core_Logo.svg/1200px-.NET_Core_Logo.svg.png",
     },
     {
-        name: "GitHub",
-        techURL: "",
-        imgURL: "",
-    },
-    {
-        name: "GitLab",
-        techURL: "",
-        imgURL: "",
+        name: "Node.JS",
+        techURL: "https://nodejs.org/",
+        imgURL: "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d9/Node.js_logo.svg/1920px-Node.js_logo.svg.png",
     },
     {
         name: "PostgreSQL",
-        techURL: "",
-        imgURL: "",
+        techURL: "https://www.postgresql.org/",
+        imgURL: "https://upload.wikimedia.org/wikipedia/commons/thumb/2/29/Postgresql_elephant.svg/1200px-Postgresql_elephant.svg.png",
     },
     {
         name: "PowerShell",
-        techURL: "",
-        imgURL: "",
+        techURL: "https://docs.microsoft.com/en-us/powershell/",
+        imgURL: "https://docs.microsoft.com/en-us/powershell/media/index/powershell_128.svg",
     },
     {
-        name: "Bash",
-        techURL: "",
-        imgURL: "",
-    },
-    {
-        name: "Windows",
-        techURL: "",
-        imgURL: "",
-    },
-    {
-        name: "CentOS",
-        techURL: "",
-        imgURL: "",
-    },
-    {
-        name: "Docker",
-        techURL: "",
-        imgURL: "",
-    },
-    {
-        name: "Consul",
-        techURL: "",
-        imgURL: "",
-    },
-    {
-        name: "VS Code",
-        techURL: "",
-        imgURL: "",
+        name: "React",
+        techURL: "https://reactjs.org/",
+        imgURL: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/1200px-React-icon.svg.png",
     },
     {
         name: "Travis CI",
-        techURL: "",
-        imgURL: "",
+        techURL: "https://travis-ci.com/",
+        imgURL: "https://miro.medium.com/max/501/1*IP7q20j8JJK6dB2Jy1pcig.png",
+    },
+    {
+        name: "TypeScript",
+        techURL: "https://www.typescriptlang.org/",
+        imgURL: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a6/TypeScript_Logo.png/220px-TypeScript_Logo.png",
+    },
+    {
+        name: "VS Code",
+        techURL: "https://code.visualstudio.com/",
+        imgURL: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Visual_Studio_Code_1.35_icon.svg/1200px-Visual_Studio_Code_1.35_icon.svg.png",
+    },
+    {
+        name: "Windows",
+        techURL: "https://www.microsoft.com/en-us/windows",
+        imgURL: "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ee/Windows_logo_%E2%80%93_2012_%28dark_blue%29.svg/90px-Windows_logo_%E2%80%93_2012_%28dark_blue%29.svg.png",
     },
 ];
 
 export default class Technologies extends React.Component<TechnologiesProps, TechnologiesState> {
     public static defaultProps: TechnologiesProps = {
-        horizontalBars: 25,
-        verticalBars: 80,
+        horizontalBars: 50,
+        verticalBars: 200,
         verticalBarGapPercent: 7,
         scrollSpeed: 30,
-        horizonHeightPercent: 20,
+        horizonHeightPercent: 50,
         vanishingPointHeightExtraPercent: 5,
         lineStyle: "magenta"
     }
@@ -157,15 +157,21 @@ export default class Technologies extends React.Component<TechnologiesProps, Tec
         if (context === null) {
             return
         }
+        const bgColour = "#000033";
         context.clearRect(0, 0, canvas.width, canvas.height);
         if (context.fillStyle) {
-            context.fillStyle = "black";
+            context.fillStyle = bgColour;
             context.fillRect(0, 0, canvas.width, canvas.height);
         }
-        context.beginPath();
-        context.fillStyle = "red";
-        context.arc(50, 50, 50, 0, 2 * Math.PI);
-        context.fill();
+        let grad = context.createLinearGradient(0, 0, 0, canvas.height / 10);
+        grad.addColorStop(0, "red");
+        grad.addColorStop(1, "orange");
+        drawSun(context, grad, canvas.width / 2, canvas.height / 10, canvas.height / 10, [
+            {
+                y: 60,
+                width: 2,
+            },
+        ], bgColour);
         drawLines(context, canvas.height, canvas.width, this.props, this.state);
         this.setState({
             step: (this.state.step + 1) % this.frames()
@@ -215,6 +221,21 @@ function drawVerticalLine(ctx: CanvasRenderingContext2D, height: number, vanishi
     ctx.moveTo(startX, height);
     ctx.lineTo(dstX, originY);
     ctx.stroke();
+}
+
+function drawSun(ctx: CanvasRenderingContext2D, fill: string | CanvasGradient | CanvasPattern, centreX: number, centreY: number, radius: number, bands: { y: number, width: number }[], background: string | CanvasGradient | CanvasPattern) {
+    ctx.beginPath();
+    ctx.fillStyle = fill;
+    ctx.arc(centreX, centreY, radius, 0, 2 * Math.PI);
+    ctx.fill();
+    ctx.strokeStyle = background;
+    for (let i = 0; i < bands.length; i++) {
+        let band = bands[i];
+        ctx.lineWidth = band.width;
+        ctx.beginPath();
+        ctx.moveTo(centreX - radius, 20);
+        ctx.lineTo(centreX + radius, 20);
+    }
 }
 
 function renderTechnologies(): JSX.Element[] {
