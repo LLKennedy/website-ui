@@ -37,6 +37,11 @@ const technologies: techIcon[] = [
         imgURL: "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d9/Node.js_logo.svg/1920px-Node.js_logo.svg.png",
     },
     {
+        name: "TypeScript",
+        techURL: "https://www.typescriptlang.org/",
+        imgURL: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a6/TypeScript_Logo.png/220px-TypeScript_Logo.png",
+    },
+    {
         name: "Go",
         techURL: "https://golang.org/",
         imgURL: "https://upload.wikimedia.org/wikipedia/commons/thumb/2/23/Go_Logo_Aqua.svg/1200px-Go_Logo_Aqua.svg.png",
@@ -45,6 +50,61 @@ const technologies: techIcon[] = [
         name: ".NET Core",
         techURL: "https://dotnet.microsoft.com/",
         imgURL: "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ee/.NET_Core_Logo.svg/1200px-.NET_Core_Logo.svg.png",
+    },
+    {
+        name: "GitHub",
+        techURL: "",
+        imgURL: "",
+    },
+    {
+        name: "GitLab",
+        techURL: "",
+        imgURL: "",
+    },
+    {
+        name: "PostgreSQL",
+        techURL: "",
+        imgURL: "",
+    },
+    {
+        name: "PowerShell",
+        techURL: "",
+        imgURL: "",
+    },
+    {
+        name: "Bash",
+        techURL: "",
+        imgURL: "",
+    },
+    {
+        name: "Windows",
+        techURL: "",
+        imgURL: "",
+    },
+    {
+        name: "CentOS",
+        techURL: "",
+        imgURL: "",
+    },
+    {
+        name: "Docker",
+        techURL: "",
+        imgURL: "",
+    },
+    {
+        name: "Consul",
+        techURL: "",
+        imgURL: "",
+    },
+    {
+        name: "VS Code",
+        techURL: "",
+        imgURL: "",
+    },
+    {
+        name: "Travis CI",
+        techURL: "",
+        imgURL: "",
     },
 ];
 
@@ -75,15 +135,7 @@ export default class Technologies extends React.Component<TechnologiesProps, Tec
                 <div className="Technologies-overlay">
                     <div className="Technologies-textwrapper">
                         <header className="Technologies-text">{Text1}</header>
-                        <div className="Technologies-icons">
-                            {technologies.map(tech => {
-                                return (
-                                    <a href={tech.techURL}>
-                                        <img className="Technologies-img" alt={tech.name} src={tech.imgURL} />
-                                    </a>
-                                );
-                            })}
-                        </div>
+                        {renderTechnologies()}
                         <header className="Technologies-text">{Text2}</header>
                     </div>
                 </div>
@@ -163,4 +215,30 @@ function drawVerticalLine(ctx: CanvasRenderingContext2D, height: number, vanishi
     ctx.moveTo(startX, height);
     ctx.lineTo(dstX, originY);
     ctx.stroke();
+}
+
+function renderTechnologies(): JSX.Element[] {
+    let elems: JSX.Element[] = [];
+    for (let i = 0; i < technologies.length / 8; i++) {
+        console.log(i);
+        elems.push(
+            <div className="Technologies-icons">
+                {renderTechRow(i)}
+            </div>);
+    }
+    return elems;
+}
+
+function renderTechRow(i: number): JSX.Element[] {
+    let innerElems: JSX.Element[] = [];
+    for (let j = i * 8; j < (i * 8) + 8 && j < technologies.length; j++) {
+        console.log(i, j)
+        let tech = technologies[j];
+        innerElems.push(
+            <a href={tech.techURL}>
+                <img className="Technologies-img" alt={tech.name} src={tech.imgURL} />
+            </a>
+        )
+    }
+    return innerElems
 }
