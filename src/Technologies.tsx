@@ -117,7 +117,7 @@ export default class Technologies extends React.Component<TechnologiesProps, Tec
         verticalBars: 200,
         verticalBarGapPercent: 7,
         scrollSpeed: 30,
-        horizonHeightPercent: 50,
+        horizonHeightPercent: 45,
         vanishingPointHeightExtraPercent: 5,
         lineStyle: "magenta"
     }
@@ -185,8 +185,12 @@ function paintCanvas(canvas: HTMLCanvasElement, props: Readonly<TechnologiesProp
     grad.addColorStop(1, "orange");
     drawSun(context, grad, canvas.width / 2, circleHeight, circleHeight, [
         {
+            y: 45,
+            width: circleHeight / 80,
+        },
+        {
             y: 35,
-            width: circleHeight / 100,
+            width: circleHeight / 40,
         },
         {
             y: 25,
