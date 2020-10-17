@@ -121,7 +121,6 @@ export default class Technologies extends React.Component<TechnologiesProps, Tec
         vanishingPointHeightExtraPercent: 5,
         lineStyle: "magenta"
     }
-    // ctx: CanvasRenderingContext2D;
     constructor(props: TechnologiesProps | Readonly<TechnologiesProps>) {
         super(props);
         this.state = {
@@ -129,7 +128,6 @@ export default class Technologies extends React.Component<TechnologiesProps, Tec
             step: 0
         };
         this.paint = this.paint.bind(this);
-        this.frames = this.frames.bind(this);
     }
     render() {
         return (
@@ -150,51 +148,56 @@ export default class Technologies extends React.Component<TechnologiesProps, Tec
     componentDidMount() {
         requestAnimationFrame(this.paint);
     }
-    paint() {
+    public paint(): Error | void {
         let canvas = this?.state?.canvasRef.current;
         if (canvas === undefined || canvas === null) {
-            return
+            return new Error("no canvas to paint on")
         }
-        canvas = canvas as HTMLCanvasElement;
-        canvas.width = canvas.clientWidth;
-        canvas.height = canvas.clientHeight;
-        let context = canvas.getContext("2d");
-        if (context === null) {
-            return
-        }
-        const bgColour = "#000033";
-        context.clearRect(0, 0, canvas.width, canvas.height);
-        if (context.fillStyle) {
-            context.fillStyle = bgColour;
-            context.fillRect(0, 0, canvas.width, canvas.height);
-        }
-        const circleHeight = canvas.height / 8;
-        let grad = context.createLinearGradient(0, 0, 0, circleHeight);
-        grad.addColorStop(0, "red");
-        grad.addColorStop(1, "orange");
-        drawSun(context, grad, canvas.width / 2, circleHeight, circleHeight, [
-            {
-                y: 35,
-                width: circleHeight / 100,
-            },
-            {
-                y: 25,
-                width: circleHeight / 20,
-            },
-            {
-                y: 15,
-                width: circleHeight / 10,
-            },
-        ], bgColour);
-        drawLines(context, canvas.height, canvas.width, this.props, this.state);
+        paintCanvas(canvas, this.props, this.state);
         this.setState({
-            step: (this.state.step + 1) % this.frames()
+            step: (this.state.step + 1) % frames(this.props)
         })
         requestAnimationFrame(this.paint);
     }
-    frames(): number {
-        return scrollMultiplier / this.props.scrollSpeed;
+}
+
+function frames(props: Readonly<TechnologiesProps>): number {
+    return scrollMultiplier / props.scrollSpeed;
+}
+
+function paintCanvas(canvas: HTMLCanvasElement, props: Readonly<TechnologiesProps>, state: Readonly<TechnologiesState>) {
+    canvas = canvas as HTMLCanvasElement;
+    canvas.width = canvas.clientWidth;
+    canvas.height = canvas.clientHeight;
+    let context = canvas.getContext("2d");
+    if (context === null) {
+        return
     }
+    const bgColour = "#000033";
+    context.clearRect(0, 0, canvas.width, canvas.height);
+    if (context.fillStyle) {
+        context.fillStyle = bgColour;
+        context.fillRect(0, 0, canvas.width, canvas.height);
+    }
+    const circleHeight = canvas.height / 8;
+    let grad = context.createLinearGradient(0, 0, 0, circleHeight);
+    grad.addColorStop(0, "red");
+    grad.addColorStop(1, "orange");
+    drawSun(context, grad, canvas.width / 2, circleHeight, circleHeight, [
+        {
+            y: 35,
+            width: circleHeight / 100,
+        },
+        {
+            y: 25,
+            width: circleHeight / 20,
+        },
+        {
+            y: 15,
+            width: circleHeight / 10,
+        },
+    ], bgColour);
+    drawLines(context, canvas.height, canvas.width, props, state);
 }
 
 function drawLines(ctx: CanvasRenderingContext2D, height: number, width: number, props: Readonly<TechnologiesProps>, state: Readonly<TechnologiesState>) {
