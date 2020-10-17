@@ -13,7 +13,6 @@ export default class Home extends React.Component {
                     <a href="https://www.github.com/LLKennedy" className="Home-link">Here's my Github!</a>
                     You can also keep scrolling for more about me.
                 </header>
-                {/* <Detail /> */}
                 <Technologies />
             </div>
         )

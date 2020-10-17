@@ -3,6 +3,9 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
+import { v4 } from 'uuid';
+
+console.log("Welcome! Your session ID is: " + v4());
 
 ReactDOM.render(
   <React.StrictMode>

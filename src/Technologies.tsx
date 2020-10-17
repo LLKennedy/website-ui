@@ -23,7 +23,10 @@ interface techIcon {
 }
 
 const scrollMultiplier = 900;
-const Text1 = "I'm a software developer and systems integrator. I have experience designing, implementing, maintaining, operating and upgrading software for its entire lifecycle. These are a few of the technologies I use on a regular basis:"
+
+const workStartDate = new Date(2016, 3);
+const Text1_1 = "I'm a software developer and systems integrator. I have "
+const Text1_2 = " years of experience designing, implementing, maintaining, operating and upgrading software for its entire lifecycle. These are a few of the technologies I use on a regular basis:"
 const Text2 = "Besides my technical skills, I enjoy sci-fi and fantasy novels, the entire audiovisual aesthetic of Synthwave/Vaporwave, and thought-provoking or artistic video games such as Outer Wilds, Riven, KSP and Transistor."
 const technologies: techIcon[] = [
     {
@@ -134,8 +137,10 @@ export default class Technologies extends React.Component<TechnologiesProps, Tec
                 <canvas ref={this?.state?.canvasRef} className="Technologies-canvas" />
                 <div className="Technologies-overlay">
                     <div className="Technologies-textwrapper">
-                        <header className="Technologies-text">{Text1}</header>
+                        <header className="Technologies-text">{Text1_1 + (new Date().getFullYear() - workStartDate.getFullYear()) + Text1_2}</header>
                         {renderTechnologies()}
+                    </div>
+                    <div className="Technologies-textwrapper-bottom">
                         <header className="Technologies-text">{Text2}</header>
                     </div>
                 </div>
@@ -163,13 +168,22 @@ export default class Technologies extends React.Component<TechnologiesProps, Tec
             context.fillStyle = bgColour;
             context.fillRect(0, 0, canvas.width, canvas.height);
         }
-        let grad = context.createLinearGradient(0, 0, 0, canvas.height / 10);
+        const circleHeight = canvas.height / 8;
+        let grad = context.createLinearGradient(0, 0, 0, circleHeight);
         grad.addColorStop(0, "red");
         grad.addColorStop(1, "orange");
-        drawSun(context, grad, canvas.width / 2, canvas.height / 10, canvas.height / 10, [
+        drawSun(context, grad, canvas.width / 2, circleHeight, circleHeight, [
             {
-                y: 60,
-                width: 2,
+                y: 35,
+                width: circleHeight / 100,
+            },
+            {
+                y: 25,
+                width: circleHeight / 20,
+            },
+            {
+                y: 15,
+                width: circleHeight / 10,
             },
         ], bgColour);
         drawLines(context, canvas.height, canvas.width, this.props, this.state);
@@ -228,22 +242,24 @@ function drawSun(ctx: CanvasRenderingContext2D, fill: string | CanvasGradient | 
     ctx.fillStyle = fill;
     ctx.arc(centreX, centreY, radius, 0, 2 * Math.PI);
     ctx.fill();
-    ctx.strokeStyle = background;
     for (let i = 0; i < bands.length; i++) {
         let band = bands[i];
-        ctx.lineWidth = band.width;
+        let dstY = (centreY + radius) - (band.y / 100) * 2 * radius;
         ctx.beginPath();
-        ctx.moveTo(centreX - radius, 20);
-        ctx.lineTo(centreX + radius, 20);
+        ctx.lineWidth = band.width;
+        ctx.strokeStyle = background;
+        ctx.moveTo(centreX - radius, dstY);
+        ctx.lineTo(centreX + radius, dstY);
+        ctx.stroke();
     }
 }
 
 function renderTechnologies(): JSX.Element[] {
     let elems: JSX.Element[] = [];
     for (let i = 0; i < technologies.length / 8; i++) {
-        console.log(i);
+        let id = "technologies-row-" + i
         elems.push(
-            <div className="Technologies-icons">
+            <div className="Technologies-icons" key={id}>
                 {renderTechRow(i)}
             </div>);
     }
@@ -253,10 +269,10 @@ function renderTechnologies(): JSX.Element[] {
 function renderTechRow(i: number): JSX.Element[] {
     let innerElems: JSX.Element[] = [];
     for (let j = i * 8; j < (i * 8) + 8 && j < technologies.length; j++) {
-        console.log(i, j)
         let tech = technologies[j];
+        let id = "technologies-row-" + i + "-item-" + j;
         innerElems.push(
-            <a href={tech.techURL}>
+            <a href={tech.techURL} key={id}>
                 <img className="Technologies-img" alt={tech.name} src={tech.imgURL} />
             </a>
         )
