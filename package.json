@@ -59,6 +59,7 @@
     ]
   },
   "devDependencies": {
-    "coveralls": "^3.1.0"
+    "coveralls": "^3.1.0",
+    "moq.ts": "^6.4.0"
   }
 }

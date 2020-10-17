@@ -11,12 +11,12 @@ export interface TechnologiesProps {
     lineStyle: string | CanvasGradient | CanvasPattern;
 }
 
-interface TechnologiesState {
+export interface TechnologiesState {
     step: number;
     canvasRef: React.RefObject<HTMLCanvasElement>;
 }
 
-interface techIcon {
+export interface techIcon {
     techURL: string;
     imgURL: string;
     name: string;
@@ -148,10 +148,10 @@ export default class Technologies extends React.Component<TechnologiesProps, Tec
     componentDidMount() {
         requestAnimationFrame(this.paint);
     }
-    public paint(): Error | void {
+    public paint() {
         let canvas = this?.state?.canvasRef.current;
         if (canvas === undefined || canvas === null) {
-            return new Error("no canvas to paint on")
+            return;
         }
         paintCanvas(canvas, this.props, this.state);
         this.setState({
@@ -165,7 +165,7 @@ function frames(props: Readonly<TechnologiesProps>): number {
     return scrollMultiplier / props.scrollSpeed;
 }
 
-function paintCanvas(canvas: HTMLCanvasElement, props: Readonly<TechnologiesProps>, state: Readonly<TechnologiesState>) {
+export function paintCanvas(canvas: HTMLCanvasElement, props: Readonly<TechnologiesProps>, state: Readonly<TechnologiesState>) {
     canvas = canvas as HTMLCanvasElement;
     canvas.width = canvas.clientWidth;
     canvas.height = canvas.clientHeight;
