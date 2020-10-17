@@ -161,7 +161,7 @@ export default class Technologies extends React.Component<TechnologiesProps, Tec
     }
 }
 
-function frames(props: Readonly<TechnologiesProps>): number {
+export function frames(props: Readonly<TechnologiesProps>): number {
     return scrollMultiplier / props.scrollSpeed;
 }
 
@@ -175,10 +175,8 @@ export function paintCanvas(canvas: HTMLCanvasElement, props: Readonly<Technolog
     }
     const bgColour = "#000033";
     context.clearRect(0, 0, canvas.width, canvas.height);
-    if (context.fillStyle) {
-        context.fillStyle = bgColour;
-        context.fillRect(0, 0, canvas.width, canvas.height);
-    }
+    context.fillStyle = bgColour;
+    context.fillRect(0, 0, canvas.width, canvas.height);
     const circleHeight = canvas.height / 8;
     let grad = context.createLinearGradient(0, 0, 0, circleHeight);
     grad.addColorStop(0, "red");

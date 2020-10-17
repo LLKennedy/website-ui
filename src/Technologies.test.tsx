@@ -1,6 +1,6 @@
 import React from 'react';
 import { render } from '@testing-library/react';
-import Technologies, { paintCanvas, TechnologiesProps, TechnologiesState } from './Technologies';
+import Technologies, { paintCanvas, TechnologiesProps, TechnologiesState, frames } from './Technologies';
 import { Mock } from 'moq.ts';
 
 it('renders correctly', async () => {
@@ -54,6 +54,7 @@ it('paints without error correctly', async () => {
         expect(validEndCoords).toContainEqual([x, y]);
     })
     ctx.setup(instance => instance.stroke()).returns();
+    ctx.setup(instance => instance.fillRect(0, 0, fakeWidth, fakeHeight)).returns();
 
 
     canvas.setup(instance => instance.clientHeight).returns(fakeHeight);
@@ -61,4 +62,17 @@ it('paints without error correctly', async () => {
     canvas.setup(instance => instance.getContext("2d")).returns(ctx.object())
 
     paintCanvas(canvas.object(), props, state);
+})
+
+it('calculates frames', async () => {
+    let calculatedFrames = frames({
+        horizonHeightPercent: 50,
+        horizontalBars: 1,
+        lineStyle: "cyan",
+        scrollSpeed: 30,
+        vanishingPointHeightExtraPercent: 10,
+        verticalBarGapPercent: 50,
+        verticalBars: 1
+    });
+    expect(calculatedFrames).toBe(30);
 })
